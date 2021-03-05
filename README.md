@@ -33,14 +33,19 @@ $ go run main.go
 Show examples of usage:
 `put-your-code-here`
 
-I'll add it one there's something lol
+I'll add it ones there's something lol
 
 ## Features
 List of features ready and TODOs for future development
-* Basically nothing so far
+* Get all songs from db
 
 To-do list:
-* Everything
+* Search songs by artist
+* Search songs by song name
+* Search songs by genre (name)
+* Search songs by lenght(minimun, maximum)
+* Get List of Genres with numbers of songs and total length of all genre songs
+* Unit testing
 
 ## Status
 Project is: _in progress_ all features are being developed.

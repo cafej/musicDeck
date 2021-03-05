@@ -11,6 +11,6 @@ type Song struct {
 	ID     int    `json:"id"`
 	Artist string `json:"artist"`
 	Song   string `json:"song"`
-	Genre  int    `json:"genre"`
+	Genre  Genre  `json:"genre"`
 	Length int    `json:"length"`
 }

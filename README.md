@@ -33,7 +33,7 @@ $ go run main.go
 Show examples of usage:
 `put-your-code-here`
 
-I'll added one there's something lol
+I'll add it one there's something lol
 
 ## Features
 List of features ready and TODOs for future development

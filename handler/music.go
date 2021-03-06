@@ -1,7 +1,6 @@
 package handler
 
 import (
-	"fmt"
 	"musicDeck/database"
 	"musicDeck/structs"
 	"net/http"
@@ -72,7 +71,6 @@ func GetSongsBy(queryType string) gin.HandlerFunc {
 		sql := `
 		SELECT s.ID, s.artist, s.song, s.length, g.name, g.ID as genreID 
 		FROM songs s INNER JOIN  genres g ON s.genre = g.ID WHERE s.` + queryType + ` LIKE '%` + searchParam + `%';`
-		fmt.Println(sql)
 		rows, err := db.Query(sql)
 		if err != nil {
 			c.Header("Content-Type", "application/json; charset=utf-8")
@@ -119,6 +117,35 @@ func GetSongsByGenre(c *gin.Context) {
 	}
 	defer db.Close()
 	c.JSON(200, songs)
+}
+
+// GetSongsByLength will retrive all songs in the DB that are between the range provided
+func GetSongsByLength(c *gin.Context) {
+	min := c.Param("minimum")
+	max := c.Param("maximum")
+	db := database.InitiateConnection()
+	songs := []structs.Song{}
+	sql := `
+	SELECT s.ID, s.artist, s.song, s.length, g.name, g.ID as genreID 
+	FROM songs s INNER JOIN  genres g ON s.genre = g.ID WHERE s.length BETWEEN ` + min + ` and ` + max + `;`
+	rows, err := db.Query(sql)
+	if err != nil {
+		c.Header("Content-Type", "application/json; charset=utf-8")
+		c.AbortWithError(400, err)
+	}
+	var song structs.Song
+	for rows.Next() {
+		// we could prettify this line with sqlx
+		err = rows.Scan(&song.ID, &song.Artist, &song.Song, &song.Length, &song.Genre.Name, &song.Genre.ID)
+		if err != nil {
+			c.Header("Content-Type", "application/json; charset=utf-8")
+			c.AbortWithError(400, err)
+		}
+		songs = append(songs, song)
+	}
+	defer db.Close()
+	c.JSON(200, songs)
+
 }
 
 // PingGet will be used to test that the API is working

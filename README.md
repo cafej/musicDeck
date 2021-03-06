@@ -18,6 +18,7 @@ Project is created with:
 * Go version: 1.16
 * Gin Web Framework version: 1.6.3
 * go-sqlite3 version: 1.10.0
+* sqlx version: 1.3.0
 	
 ## Setup
 To run this project, install it locally make sure that you have installed both libraries
@@ -38,9 +39,9 @@ I'll add it ones there's something lol
 ## Features
 List of features ready and TODOs for future development
 * Get all songs from db
+* Search songs by artist
 
 To-do list:
-* Search songs by artist
 * Search songs by song name
 * Search songs by genre (name)
 * Search songs by lenght(minimun, maximum)

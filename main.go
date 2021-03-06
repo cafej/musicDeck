@@ -19,6 +19,7 @@ func getEngine() *gin.Engine {
 
 	router.GET("/ping", handler.PingGet)
 	router.GET("/songs", handler.GetSongs)
+	router.GET("/artist/:artist", handler.GetSongsByArtist)
 
 	return router
 }

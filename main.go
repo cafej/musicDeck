@@ -24,5 +24,6 @@ func getEngine() *gin.Engine {
 	router.GET("/artist/:query", handler.GetSongsBy("artist"))
 	router.GET("/genre/:query", handler.GetSongsByGenre)
 	router.GET("length/:minimum/:maximum", handler.GetSongsByLength)
+	router.GET("/total", handler.GetGenresTime)
 	return router
 }

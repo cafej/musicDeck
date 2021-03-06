@@ -148,6 +148,32 @@ func GetSongsByLength(c *gin.Context) {
 
 }
 
+// GetGenresTime will retrive all genres in the DB with the total time of the songs summed
+func GetGenresTime(c *gin.Context) {
+	db := database.InitiateConnection()
+	genres := []structs.GenreTotal{}
+	rows, err := db.Query(`
+	SELECT g.name, sum(s.length) as total
+	FROM songs s INNER JOIN  genres g ON s.genre = g.ID 
+	GROUP BY g.name;
+	`)
+	if err != nil {
+		c.Header("Content-Type", "application/json; charset=utf-8")
+		c.AbortWithError(400, err)
+	}
+	for rows.Next() {
+		genre := structs.GenreTotal{}
+		err = rows.Scan(&genre.Name, &genre.Total)
+		if err != nil {
+			c.Header("Content-Type", "application/json; charset=utf-8")
+			c.AbortWithError(400, err)
+		}
+		genres = append(genres, genre)
+	}
+	defer db.Close()
+	c.JSON(200, genres)
+}
+
 // PingGet will be used to test that the API is working
 func PingGet(c *gin.Context) {
 	c.JSON(http.StatusOK, map[string]string{

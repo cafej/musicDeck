@@ -43,11 +43,11 @@ List of features ready and TODOs for future development
 * Search songs by song name
 * Search songs by genre (name)
 * Search songs by lenght(minimun, maximum)
+* Get List of Genres with numbers of songs and total length of all genre songs
 
 To-do list:
 
-* Get List of Genres with numbers of songs and total length of all genre songs
-* Unit testing
+* Unit testing (ugh)
 
 ## Status
 Project is: _in progress_ all features are being developed.

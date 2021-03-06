@@ -40,10 +40,12 @@ I'll add it ones there's something lol
 List of features ready and TODOs for future development
 * Get all songs from db
 * Search songs by artist
-
-To-do list:
 * Search songs by song name
 * Search songs by genre (name)
+
+To-do list:
+
+
 * Search songs by lenght(minimun, maximum)
 * Get List of Genres with numbers of songs and total length of all genre songs
 * Unit testing

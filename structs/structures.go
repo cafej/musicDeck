@@ -8,8 +8,9 @@ type Genre struct {
 
 // GenreTotal is a category of music that represent the DB structure
 type GenreTotal struct {
-	Total int    `json:"total" db:"total"`
-	Name  string `json:"name" db:"name"`
+	TotalTime  int    `json:"totalTime" db:"totalTime"`
+	TotalSongs int    `json:"totalSongs" db:"totalSongs"`
+	Name       string `json:"name" db:"name"`
 }
 
 // Song is a artistic sound composition that represents the DB structure

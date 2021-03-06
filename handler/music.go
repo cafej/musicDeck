@@ -153,7 +153,7 @@ func GetGenresTime(c *gin.Context) {
 	db := database.InitiateConnection()
 	genres := []structs.GenreTotal{}
 	rows, err := db.Query(`
-	SELECT g.name, sum(s.length) as total
+	SELECT g.name, sum(s.length) as totalTime, count(s.song) as totalSongs
 	FROM songs s INNER JOIN  genres g ON s.genre = g.ID 
 	GROUP BY g.name;
 	`)
@@ -163,7 +163,7 @@ func GetGenresTime(c *gin.Context) {
 	}
 	for rows.Next() {
 		genre := structs.GenreTotal{}
-		err = rows.Scan(&genre.Name, &genre.Total)
+		err = rows.Scan(&genre.Name, &genre.TotalTime, &genre.TotalSongs)
 		if err != nil {
 			c.Header("Content-Type", "application/json; charset=utf-8")
 			c.AbortWithError(400, err)

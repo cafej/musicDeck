@@ -177,6 +177,6 @@ func GetGenresTime(c *gin.Context) {
 // PingGet will be used to test that the API is working
 func PingGet(c *gin.Context) {
 	c.JSON(http.StatusOK, map[string]string{
-		"message": "found me",
+		"message": "pong",
 	})
 }

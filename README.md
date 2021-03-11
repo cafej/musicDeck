@@ -30,6 +30,12 @@ After GCC is installed you can run the following command:
 ```
 $ go run main.go
 ```
+
+If you want to execute the build in test run the following command:
+```
+$ go test 
+```
+
 ## Code Examples
 Show examples of usage:
 `put-your-code-here`
@@ -44,10 +50,8 @@ List of features ready and TODOs for future development
 * Search songs by genre (name)
 * Search songs by lenght(minimun, maximum)
 * Get List of Genres with numbers of songs and total length of all genre songs
-
-To-do list:
-
 * Unit testing (ugh)
+
 
 ## Status
 Project is: _in progress_ all features are being developed.
